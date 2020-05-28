@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/assassin_s_creed_big.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/assassin_s_creed_small.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redis,集群," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="redis 集群搭建以及监测环境按照官网的指导，要实现3主3从的集群 虚拟机单机ip:192.168.40.128 集群基本搭建简单下载 通过 wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-4.0.10.tar.gz 解压缩 tar zxvf redis-4.0.10.tar.gz 指定安装路径，切换root用户执行make &amp;&amp; mak">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis 集群搭建以及监测环境">
+<meta property="og:url" content="http://yoursite.com/2017/12/02/redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="zixiu">
+<meta property="og:description" content="redis 集群搭建以及监测环境按照官网的指导，要实现3主3从的集群 虚拟机单机ip:192.168.40.128 集群基本搭建简单下载 通过 wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-4.0.10.tar.gz 解压缩 tar zxvf redis-4.0.10.tar.gz 指定安装路径，切换root用户执行make &amp;&amp; mak">
+<meta property="article:published_time" content="2017-12-02T13:01:24.000Z">
+<meta property="article:modified_time" content="2020-03-29T09:12:38.296Z">
+<meta property="article:author" content="zixiu">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="集群">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/02/redis集群搭建/"/>
+
+
+
+
+
+  <title>redis 集群搭建以及监测环境 | zixiu</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zixiu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/02/redis%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zixiu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zixiu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redis 集群搭建以及监测环境</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-02T21:01:24+08:00">
+                2017-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">开发部署</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="redis-集群搭建以及监测环境"><a href="#redis-集群搭建以及监测环境" class="headerlink" title="redis 集群搭建以及监测环境"></a>redis 集群搭建以及监测环境</h1><p>按照官网的指导，要实现3主3从的集群 虚拟机单机ip:192.168.40.128</p>
+<h2 id="集群基本搭建"><a href="#集群基本搭建" class="headerlink" title="集群基本搭建"></a>集群基本搭建</h2><h3 id="简单下载"><a href="#简单下载" class="headerlink" title="简单下载"></a>简单下载</h3><ul>
+<li>通过 <code>wget http://download.redis.io/releases/redis-4.0.10.tar.gz</code></li>
+<li>解压缩 <code>tar zxvf redis-4.0.10.tar.gz</code></li>
+<li>指定安装路径，切换root用户执行<code>make &amp;&amp; make PREFIX=/usr/local/redis install</code>，可能出现权限不够的问题，sudo同样会报错，直接使用root进行操作。</li>
+</ul>
+<hr>
+<h3 id="安装编译工具"><a href="#安装编译工具" class="headerlink" title="安装编译工具"></a>安装编译工具</h3><ul>
+<li><code>sudo apt-get update</code></li>
+<li><code>sudo apt-get install gcc</code></li>
+<li><code>sudo apt-get install make</code></li>
+<li><code>sudo apt-get install tcl</code></li>
+</ul>
+<hr>
+<h3 id="创建redis集群文件夹"><a href="#创建redis集群文件夹" class="headerlink" title="创建redis集群文件夹"></a>创建redis集群文件夹</h3><ul>
+<li>因为是/usr，所以始终都是在root权限下进行操作</li>
+<li><code>cd /usr/local/redis</code></li>
+<li><code>mkdir cluster</code></li>
+<li><code>cd cluster</code></li>
+<li><code>mkdir 7000 7001 7002 7003 7004 7005</code></li>
+</ul>
+<hr>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>复制redis conf内的config文件复制到六个文件夹中，并且修改以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 端口号  </span><br><span class="line">port 7000  </span><br><span class="line"># 后台启动  </span><br><span class="line">daemonize yes  </span><br><span class="line"># 开启集群  </span><br><span class="line">cluster-enabled yes  </span><br><span class="line">#集群节点配置文件  </span><br><span class="line">cluster-config-file nodes-7000.conf  </span><br><span class="line"># 集群连接超时时间  </span><br><span class="line">cluster-node-timeout 5000  </span><br><span class="line"># 进程pid的文件位置  </span><br><span class="line">pidfile &#x2F;home&#x2F;ubuntu&#x2F;redis-4.0.10&#x2F;pid&#x2F;redis-7000.pid</span><br><span class="line">#工作文件夹</span><br><span class="line">dir &quot;&#x2F;home&#x2F;ubuntu&#x2F;redis-4.0.10&#x2F;working&quot;</span><br><span class="line"># 开启aof  </span><br><span class="line">appendonly yes  </span><br><span class="line"># aof文件路径  </span><br><span class="line">appendfilename &quot;appendonly-7005.aof&quot;  </span><br><span class="line"># rdb文件路径  </span><br><span class="line">dbfilename dump-7000.rdb</span><br></pre></td></tr></table></figure>
+<p>redis 的配置文件中的bind指定的是redis服务器的网卡ip，也就是redis服务器的ip</p>
+<hr>
+<h3 id="启动脚本"><a href="#启动脚本" class="headerlink" title="启动脚本"></a>启动脚本</h3><ul>
+<li><code>cd /home/ubuntu/redis-4.0.10/</code></li>
+<li><code>touch start.link.sh</code>为了操作简单,创建脚本</li>
+<li>修改启动脚本，为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">export BASE_FLOD&#x3D;&quot;&#x2F;usr&#x2F;local&#x2F;redis&quot;</span><br><span class="line">&#123;BASE_FLOD&#125;&#x2F;bin&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;cluster&#x2F;7000&#x2F;redis.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;cluster&#x2F;7001&#x2F;redis.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;cluster&#x2F;7002&#x2F;redis.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;cluster&#x2F;7003&#x2F;redis.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;cluster&#x2F;7004&#x2F;redis.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;cluster&#x2F;7005&#x2F;redis.conf</span><br><span class="line">#cd src</span><br><span class="line">#.&#x2F;redis-trib.rb create --replicas 1 192.168.40.128:7000 192.168.40.128:7001 192.168.40.128:7002 192.168.40.128:7003 192.168.40.128:7004 192.168.40.128:7005</span><br></pre></td></tr></table></figure>
+其中注释的是为了简化初始启动的，ip需要跟每个节点配置的redis.conf 中bind 属性绑定的一致</li>
+<li>启动后可以通过ps -ef | grep redis命令查询对应的线程是否启动</li>
+</ul>
+<hr>
+<h3 id="集群启动"><a href="#集群启动" class="headerlink" title="集群启动"></a>集群启动</h3><ul>
+<li>关联程序使用的ruby写的，所以要搭建rudy的运行环境，需要安装rudbygem</li>
+<li><code>sudo apt-get install ruby rubygems -y</code></li>
+<li>gem install redis,运行到这里会感觉十分慢，需要耐心等待，在redis安装目录下，src文件夹redis-trib.rb</li>
+<li>运行<code>redis-trib.rb create --replicas 1 192.168.40.128:7000 192.168.40.128:7001 192.168.40.128:7002 192.168.40.128:7003 192.168.40.128:7004 192.168.40.128:7005</code>,<br>检查配置的信息是否有错误，没有直接yes就可以.  <code>[OK] All 16384 slots covered.</code>代表接群启动成功。</li>
+</ul>
+<hr>
+<h3 id="节点查看，重启"><a href="#节点查看，重启" class="headerlink" title="节点查看，重启"></a>节点查看，重启</h3><p>查看集群运行状态：使用命令<code>./redis-trib.rb check 192.168.40.128:7000</code>，进行集群的状态检查</p>
+<hr>
+<h3 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h3><h4 id="自带测试工具redis-benchmark"><a href="#自带测试工具redis-benchmark" class="headerlink" title="自带测试工具redis-benchmark"></a>自带测试工具redis-benchmark</h4><ul>
+<li><code>redis-benchmark -h 192.168.40.128 -p 6379 -c 100 -n 100000</code><br>100个并发连接，100000个请求，检测 host 为 localhost 端口为6379的 redis 服务器性能。</li>
+<li><code>redis-benchmark -h 192.168.40.128 -p 6379 -q -d 100</code><br>测试存取大小为100字节的数据包的性能。</li>
+<li><code>redis-benchmark -t set,lpush -n 100000 -q</code><br>只测试某些操作的性能。</li>
+<li><code>redis-benchmark -n 100000 -q script load &quot;redis.call(‘set’,’foo’,’bar’)&quot;</code><br>只测试某些数值存取的性能。</li>
+</ul>
+<hr>
+<h3 id="集群密码设置"><a href="#集群密码设置" class="headerlink" title="集群密码设置"></a>集群密码设置</h3><p>集群搭建初始不需要密码，启动完成后，先看每个节点的配置文件是否有读写权限，如果没有读写权限，需要chmod修改的读写权限，通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;redis-cli -c -p port</span><br><span class="line">config set masterauth password</span><br><span class="line">config set requirepass password</span><br><span class="line">config rewrite</span><br></pre></td></tr></table></figure>
+<p>分别连接每个节点进行设置<br>若要重启发现连接不上，修改启动脚本 redis-.sh 99行，配置启动脚本密码启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">***</span><br><span class="line">### 代码测试</span><br></pre></td></tr></table></figure>
+<p>/*<br> *集群连接测试<br> */</p>
+<p>@Test<br>public void testJedisCluster() {<br>    Set<HostAndPort> nodes = new LinkedHashSet&lt;&gt;();<br>    //所有主机节点ip和端口<br>    nodes.add(new HostAndPort(“192.168.40.128”, 7000));<br>    nodes.add(new HostAndPort(“192.168.40.128”, 7001));<br>    nodes.add(new HostAndPort(“192.168.40.128”, 7002));<br>    nodes.add(new HostAndPort(“192.168.40.128”, 7003));<br>    nodes.add(new HostAndPort(“192.168.40.128”, 7004));<br>    nodes.add(new HostAndPort(“192.168.40.128”, 7005));<br>    //没有密码<br>    //JedisCluster cluster = new JedisCluster(nodes);<br>    //添加密码调用<br>    JedisCluster cluster = new JedisCluster(nodes, 5000, 5000, 10, “yangfan@1995”, new GenericObjectPoolConfig());<br>    //cluster.zadd(“test_1”, String.valueOf(“”),”id_2”);<br>    System.out.println(cluster.zscore(“test_1”, “id_1”));<br>    try {<br>        cluster.close();<br>    } catch (IOException e) {<br>        e.printStackTrace();<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">***</span><br><span class="line">### 主从模式、哨兵、集群的关系</span><br><span class="line">1. 主从模式是指定复制和持久化关系，指定了主从备份的关系</span><br><span class="line">2. 哨兵：当主数据库遇到异常中断服务后，开发者可以通过手动的方式选择一个从</span><br><span class="line">数据库来升格为主数据库，以使得系统能够继续提供服务。主要是为了解决主从复制</span><br><span class="line">手动切换主从关系的检测工具，可以自动切换主从。</span><br><span class="line">3. 使用哨兵，redis每个实例也是全量存储，每个redis存储的内容都是完整的数据，</span><br><span class="line">浪费内存且有木桶效应。为了最大化利用内存，可以采用集群，就是分布式存储。</span><br><span class="line">即每台redis存储不同的内容，共有16384个slot。每个redis分得一些slot，</span><br><span class="line">hash_slot &#x3D; crc16(key) mod 16384 找到对应slot，键是可用键，如果有&#123;&#125;则取&#123;&#125;</span><br><span class="line">内的作为可用键，否则整个键是可用键集群至少需要3主3从，且每个实例使用不同</span><br><span class="line">的配置文件，主从不用配置，集群会自己选。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 监控部署</span><br><span class="line">### RedisLive搭建部署</span><br><span class="line">***</span><br><span class="line">#### 运行环境部署</span><br><span class="line"></span><br><span class="line">1. &#96;git clone https:&#x2F;&#x2F;github.com&#x2F;kumarnitin&#x2F;RedisLive.git&#96; 下载redislive,解压缩&#96;unzip -o -d &#x2F;home&#x2F;ubuntu&#x2F; RedisLive-master.zip&#96;</span><br><span class="line">2. 进入文件夹 &#96;pip install -r requirements.txt -i http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F; --trusted-host pypi.douban.com&#96;</span><br><span class="line">指定豆瓣源，下载速度更快。</span><br><span class="line">3. 进入src文件夹，复制example文件，编辑</span><br></pre></td></tr></table></figure>
+<p>{<br>    “RedisServers”:<br>    [<br>        {<br>        “server”: “192.168.40.128”,<br>        “port” : 7000,<br>        “password” : “yangfan@1995”<br>        },<br>        //…多个监听<br>    ],</p>
+<pre><code>&quot;DataStoreType&quot; : &quot;redis&quot;,
+
+&quot;RedisStatsServer&quot;: //存储的redis监听接口
+{
+    &quot;server&quot; : &quot;127.0.0.1&quot;,
+    &quot;port&quot; : 6379
+},
+
+&quot;SqliteStatsStore&quot; :
+{
+    &quot;path&quot;:  &quot;/home/ubuntu/redis-4.0.10/working/redislive.db&quot; //进行存储的文件
+}</code></pre><p>}</p>
+<pre><code>4.
+`ubuntu@ubuntu:~/redis-4.0.10$ mkdir pid`
+`ubuntu@ubuntu:~/redis-4.0.10$ mkdir log`
+`ubuntu@ubuntu:~/redis-4.0.10$ mkdir working` //保存aof，rdb，node-config文件
+
+5. RedisLive分为两部分，其中一部分为监控脚本，另一部分为web服务，所以需要分别启动。
+`./redis-monitor.py --duration=120`
+`./redis-live.py`
+
+6. 访问http://192.168.40.128:8888/index.html
+
+## Q&amp;A
+1. redis.clients.jedis.exceptions.JedisNoReachableClusterNodeException: No reachable node in cluster
+redis node的redis.conf 绑定ip设置为指定的redis节点ip，启动集群时只用指定ip启动，不使用192.168.40.128
+2. connect refuse
+关闭防火墙
+3. No module named redis
+    + 查看python位置 `which python`
+    + 先备份 `sudo cp /usr/bin/python /usr/bin/python_cp`
+    + 删除 `sudo rm /usr/bin/python`
+    + 默认设置成python3.5，创建链接 `sudo ln -s /usr/bin/python3.5 /usr/bin/python`</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+            <a href="/tags/%E9%9B%86%E7%BE%A4/" rel="tag"><i class="fa fa-tag"></i> 集群</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zixiu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#redis-集群搭建以及监测环境"><span class="nav-number">1.</span> <span class="nav-text">redis 集群搭建以及监测环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集群基本搭建"><span class="nav-number">1.1.</span> <span class="nav-text">集群基本搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单下载"><span class="nav-number">1.1.1.</span> <span class="nav-text">简单下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装编译工具"><span class="nav-number">1.1.2.</span> <span class="nav-text">安装编译工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建redis集群文件夹"><span class="nav-number">1.1.3.</span> <span class="nav-text">创建redis集群文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置文件"><span class="nav-number">1.1.4.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动脚本"><span class="nav-number">1.1.5.</span> <span class="nav-text">启动脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群启动"><span class="nav-number">1.1.6.</span> <span class="nav-text">集群启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点查看，重启"><span class="nav-number">1.1.7.</span> <span class="nav-text">节点查看，重启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能测试"><span class="nav-number">1.1.8.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自带测试工具redis-benchmark"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">自带测试工具redis-benchmark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群密码设置"><span class="nav-number">1.1.9.</span> <span class="nav-text">集群密码设置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zixiu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
