@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Hadoop 配置信息处理配置信息处理方式简介Java配置文件java.util.Properties中包含了一些常用的配置文件属性的处理，不过仅仅是支持简单的键值对操作  mac:没有tree命令，Windows和Linux均有tree命令，使用find命令进行模拟find . -print | sed -e &#39;s;[^&#x2F;]*&#x2F;;|_;g;s;_|; |;g&#39;  文件目录结构当前">
+<meta name="description" content="Hadoop 配置信息处理配置信息处理方式简介Java配置文件Java一般操作配置文件的方式是通过java.util.Properties类来处理的，其中java.util.Properties中包含了一些常用的配置文件属性的处理，不过仅仅是支持简单的键值对操作  mac:没有tree命令，Windows和Linux均有tree命令，使用find命令进行模拟find . -print | sed">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop技术内幕-Hadoop 配置信息处理">
 <meta property="og:url" content="http://yoursite.com/2016/04/01/Hadoop-%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="棋子">
-<meta property="og:description" content="Hadoop 配置信息处理配置信息处理方式简介Java配置文件java.util.Properties中包含了一些常用的配置文件属性的处理，不过仅仅是支持简单的键值对操作  mac:没有tree命令，Windows和Linux均有tree命令，使用find命令进行模拟find . -print | sed -e &#39;s;[^&#x2F;]*&#x2F;;|_;g;s;_|; |;g&#39;  文件目录结构当前">
+<meta property="og:description" content="Hadoop 配置信息处理配置信息处理方式简介Java配置文件Java一般操作配置文件的方式是通过java.util.Properties类来处理的，其中java.util.Properties中包含了一些常用的配置文件属性的处理，不过仅仅是支持简单的键值对操作  mac:没有tree命令，Windows和Linux均有tree命令，使用find命令进行模拟find . -print | sed">
 <meta property="og:image" content="https://i.imgur.com/gFVocBz.png">
 <meta property="article:published_time" content="2016-03-31T16:13:32.000Z">
-<meta property="article:modified_time" content="2020-06-03T16:19:48.363Z">
+<meta property="article:modified_time" content="2021-06-23T07:25:33.668Z">
 <meta property="article:author" content="棋子">
 <meta property="article:tag" content="大数据">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -325,6 +325,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
 
@@ -343,7 +348,7 @@
       
 
       
-        <h1 id="Hadoop-配置信息处理"><a href="#Hadoop-配置信息处理" class="headerlink" title="Hadoop 配置信息处理"></a>Hadoop 配置信息处理</h1><h2 id="配置信息处理方式简介"><a href="#配置信息处理方式简介" class="headerlink" title="配置信息处理方式简介"></a>配置信息处理方式简介</h2><h3 id="Java配置文件"><a href="#Java配置文件" class="headerlink" title="Java配置文件"></a>Java配置文件</h3><p><code>java.util.Properties</code>中包含了一些常用的配置文件属性的处理，不过仅仅是支持简单的键值对操作</p>
+        <h1 id="Hadoop-配置信息处理"><a href="#Hadoop-配置信息处理" class="headerlink" title="Hadoop 配置信息处理"></a>Hadoop 配置信息处理</h1><h2 id="配置信息处理方式简介"><a href="#配置信息处理方式简介" class="headerlink" title="配置信息处理方式简介"></a>配置信息处理方式简介</h2><h3 id="Java配置文件"><a href="#Java配置文件" class="headerlink" title="Java配置文件"></a>Java配置文件</h3><p>Java一般操作配置文件的方式是通过<code>java.util.Properties</code>类来处理的，其中<code>java.util.Properties</code>中包含了一些常用的配置文件属性的处理，不过仅仅是支持简单的键值对操作</p>
 <blockquote>
 <p>mac:没有tree命令，Windows和Linux均有tree命令，使用find命令进行模拟<code>find . -print | sed -e &#39;s;[^/]*/;|_;g;s;_|; |;g&#39;</code></p>
 </blockquote>
@@ -517,7 +522,7 @@
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                <a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">
                   <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
@@ -528,7 +533,7 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index-1.html">
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
@@ -582,7 +587,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -606,6 +611,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 
