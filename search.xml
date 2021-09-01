@@ -79,106 +79,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hadoop技术内幕-源代码环境准备</title>
-    <url>/2016/03/29/%E6%BA%90%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/</url>
-    <content><![CDATA[<h1 id="源代码环境准备"><a href="#源代码环境准备" class="headerlink" title="源代码环境准备"></a>源代码环境准备</h1><h3 id="Hadoop生态环境"><a href="#Hadoop生态环境" class="headerlink" title="Hadoop生态环境"></a>Hadoop生态环境</h3><ul>
-<li>Hadoop Common:配置、远程RPC、序列化机制、抽象文件系统</li>
-<li>Avro:数据序列化系统</li>
-<li>Zookeeper:统一命名服务、状态同步、集群管理、分布式应用配置</li>
-<li>HDFS:分布式文件系统</li>
-<li>MR:计算模型，对分布式并行环境处理数据</li>
-<li>HBase:增强的稀疏排序，可以和MR完美结合</li>
-<li>Hive:数据仓库架构，数据ETL工具，数据存储管理</li>
-<li>Pig:针对大型数据集进行分析和评估的平台</li>
-<li>Mahout:数据挖掘处理架构</li>
-<li>X-RIME:社会网络分析工具</li>
-<li>Crossbow:基因测序等海量计算</li>
-<li>Chukwa:监控大规模分布式系统的数据收集开源系统</li>
-<li>Flume:日志收集系统</li>
-<li>Sqoop:结构化数据和Hadoop之间进行数据交换</li>
-<li>Oozie:数据工作流处理</li>
-</ul>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>大数据</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开源协议简介以及使用</title>
-    <url>/2017/06/24/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E7%AE%80%E4%BB%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="开源协议简介以及使用"><a href="#开源协议简介以及使用" class="headerlink" title="开源协议简介以及使用"></a>开源协议简介以及使用</h1><h2 id="开源协议简介"><a href="#开源协议简介" class="headerlink" title="开源协议简介"></a>开源协议简介</h2><h3 id="什么是开源协议"><a href="#什么是开源协议" class="headerlink" title="什么是开源协议"></a>什么是开源协议</h3><p>开源协议是针对电脑软件或者其他产品规定，允许在指定的条件下或限制下，使用修改源代码、分享蓝图或设计的公共协议，不同的协议中定义了个人或者公司是否使用开源代码进行修改、设计使用、商用以及是否需要标注来源。</p>
-<h3 id="为什么需要开源协议"><a href="#为什么需要开源协议" class="headerlink" title="为什么需要开源协议"></a>为什么需要开源协议</h3><p>开源协议是证明软件版权的有力证据，这里就要提到软著(计算机软件著作权)，软件著作权是国内对于软件版权的保护证明，但是软著对于版本更新支持不好，每次更新迭代都是要重新注册。</p>
-<p>开源协议上虽然在国内没有明确的法律支撑，但是却是软件版权的有利证明，并且对于更新迭代支持更好。</p>
-<h2 id="开源协议列表"><a href="#开源协议列表" class="headerlink" title="开源协议列表"></a>开源协议列表</h2><h3 id="常用开源协议"><a href="#常用开源协议" class="headerlink" title="常用开源协议"></a>常用开源协议</h3><h4 id="Apache-License-2-0"><a href="#Apache-License-2-0" class="headerlink" title="Apache License 2.0"></a>Apache License 2.0</h4><p>Apache 背书的常用协议，Apache很多开源项目都用到了，以下是协议内容：</p>
-<ol>
-<li>永久免费的全球性的不可撤销的版本许可</li>
-<li>允许复制、公开以及其衍生内容</li>
-<li>允许对内容商用化</li>
-<li>修改内容必须显著声明，且保留原始源作品中的版权、商标等信息</li>
-<li>在与Apache协议不冲突情况下允许在衍生内容中添加自己的许可</li>
-</ol>
-<h4 id="BSD"><a href="#BSD" class="headerlink" title="BSD"></a>BSD</h4><p>The BSD License（BSD）是Berkeley Software Distribution License（柏克莱软体散布授权条款）的缩写，许多软体是在此一授权条款下发布的。</p>
-<p>以下是 BSD 2-Clause协议内容：</p>
-<ol>
-<li>源代码的再分发必须保留上述版权声明、本条件列表和以下免责声明</li>
-<li>源代码修改后必须在内容中标识版权声明</li>
-</ol>
-<p>BSD 3-Clause 协议在 BSD 2-Clause基础上添加了</p>
-<ol>
-<li>未经事先书面许可，不得使用版权所有者或其贡献者的名称来认可或推广本软件衍生的产品</li>
-</ol>
-<h4 id="GNU-General-Public-License-GPL"><a href="#GNU-General-Public-License-GPL" class="headerlink" title="GNU General Public License (GPL)"></a>GNU General Public License (GPL)</h4><p>由 MIT 教授理查德·斯托曼（Richard Stallman）提出应将软件源码看成人类共同拥有的知识财富，应该公开地自由交换、修改提出了GNU计划并建立了自由软件基金会;同时，发布了一份举足轻重的法律文件，GNU 通用公共授权书(GPL)，主要分为版本2和版本3，主要区别是版本3中添加免责声明等附加内容。</p>
-<p>以下是GPL协议内容：</p>
-<ol>
-<li>允许对代码复制、编辑</li>
-<li>允许衍生内容商用</li>
-<li>衍生的产品必须开源,并且不得限制公开权益，不允许修改后和衍生的代码做为闭源的商业软件发布和销售</li>
-<li>必须声明来源并且需要声明原有的协议</li>
-</ol>
-<h4 id="GNU-Library-or-“Lesser”-General-Public-License-LGPL"><a href="#GNU-Library-or-“Lesser”-General-Public-License-LGPL" class="headerlink" title="GNU Library or “Lesser” General Public License (LGPL)"></a>GNU Library or “Lesser” General Public License (LGPL)</h4><p>根据GPL协议的规定，所有的衍生内容必须开源，就会导致一个现象，有部分开源项目库如果是GPL协议并且没有替代的方案，这时如果一个非开源项目想要使用这部分项目内容就必须开源，就会与开发者的想法矛盾，因此LGPL诞生了。</p>
-<p>允许以动态链接使用开源库，同时，调用了该库的函数的那部分代码还是要开源的，除此之外的部分不需要开源。</p>
-<h4 id="MIT-license"><a href="#MIT-license" class="headerlink" title="MIT license"></a>MIT license</h4><p>MIT许可协议之名源自麻省理工学院（Massachusetts Institute of Technology, MIT），又称“X许可协议”（X License）或“X11许可协议”（X11 License）</p>
-<ol>
-<li>允许对源码进行修改、发布、公开</li>
-<li>必须包含著作权声明和许可声明</li>
-</ol>
-<h4 id="Mozilla-Public-License-2-0"><a href="#Mozilla-Public-License-2-0" class="headerlink" title="Mozilla Public License 2.0"></a>Mozilla Public License 2.0</h4><p>MPL是The Mozilla Public License的简写，是1998年初Netscape的 Mozilla小组为其开源软件项目设计的软件许可证。</p>
-<p>MPL协议与LGPL协议类似，如在已有的源代码库上加一个接口，除了接口程序的源代码以MPL许可证的形式对外许可外，源代码库中的源代码就可以不用MPL许可证的方式强制对外许可。</p>
-<h4 id="Common-Development-and-Distribution-License-CDDL"><a href="#Common-Development-and-Distribution-License-CDDL" class="headerlink" title="Common Development and Distribution License(CDDL)"></a>Common Development and Distribution License(CDDL)</h4><p>CDDL（Common Development and Distribution License，通用开发与发行许可）开源协议，是MPL（Mozilla Public License）的扩展协议，它允许公共版权使用，无专利费，并提供专利保护，可集成于商业软件中，允许自行发布许可，修改后的代码版权归软件的发起者。</p>
-<h4 id="Eclipse-Public-License-version-2-0"><a href="#Eclipse-Public-License-version-2-0" class="headerlink" title="Eclipse Public License version 2.0"></a>Eclipse Public License version 2.0</h4><p>Eclipse Public License（EPL）是一个与CPL相类似的许可证，任何扩展自Eclipse源码的代码也必须是开源的。</p>
-<ol>
-<li>EPL允许Recipients任意使用、复制、分发、传播、展示、修改以及改后闭源的二次商业发布。</li>
-<li>将源码的整体或部分再次开源发布的时候,必须继续遵循EPL开源协议来发布,而不能改用其他协议发布</li>
-<li>要发布修改后的源码时必须声明源代码可获取且要告知获取方法</li>
-<li>需要将EPL下的源码作为一部分跟其他私有的源码混合发布时，EPL代码需要使用EPL协议，其余模块可以不用开源</li>
-</ol>
-<h2 id="开源协议使用"><a href="#开源协议使用" class="headerlink" title="开源协议使用"></a>开源协议使用</h2><h3 id="github-gitlab-添加"><a href="#github-gitlab-添加" class="headerlink" title="github/gitlab 添加"></a>github/gitlab 添加</h3><p>在仓库中直接添加比较简单，通过<code>Add file</code>文件<br><img src="https://i.loli.net/2021/08/26/sduzKnjhiQrVCvX.png" alt="截屏2021-08-26 01.04.52"><br>将文件名称命名为LICENSE，会自动提示右侧的<code>Choose a license template</code></p>
-<p><img src="https://i.loli.net/2021/08/26/PiLlkt9xIQeJg5N.png" alt="截屏2021-08-26 01.03.19"><br>选择好对应的开源协议，添加到自己的项目中。<br><img src="https://i.loli.net/2021/08/26/iQDUXbkPx1wfoKl.png" alt="截屏2021-08-26 01.03.34"></p>
-<h3 id="idea-添加"><a href="#idea-添加" class="headerlink" title="idea 添加"></a>idea 添加</h3><p>idea是可以直接通过新建文件的方式，来选择建立不同需求上的开源协议的。</p>
-<blockquote>
-<p>New-&gt;License file-&gt; 选择需要使用的开源协议<br>操作如下图：</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/08/26/LQHMNeXEZc9DSmf.png" alt="截屏2021-08-26 00.56.52"></p>
-<h3 id="直接创建"><a href="#直接创建" class="headerlink" title="直接创建"></a>直接创建</h3><p>当没有编译器或者没有具体的网页操作时，可以简单的通过记事本方式，将需要使用的开源协议的规范内容COPY到文件中，命名为<code>LICENSE</code></p>
-<h2 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h2><ol>
-<li><a href="https://opensource.org/licenses" target="_blank" rel="noopener">Open Source Initiative</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2010/02/why_gpl_is_a_better_choice.html" target="_blank" rel="noopener">为什么GPL是更好的开源许可证?</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Open-source_license" target="_blank" rel="noopener">开源协议说明</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/GNU通用公共许可证" target="_blank" rel="noopener">GNU通用公共许可证</a></li>
-<li><a href="http://c.biancheng.net/view/674.html" target="_blank" rel="noopener">GPL协议和自由软件</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>开发部署</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>redis 集群搭建以及监测环境</title>
     <url>/2018/08/08/redis%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E7%9B%91%E6%B5%8B%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<h1 id="redis-集群搭建以及监测环境"><a href="#redis-集群搭建以及监测环境" class="headerlink" title="redis 集群搭建以及监测环境"></a>redis 集群搭建以及监测环境</h1><p>按照官网的指导，要实现3主3从的集群 虚拟机单机ip:192.168.40.128</p>
@@ -278,6 +178,183 @@
       <tags>
         <tag>Redis</tag>
         <tag>集群</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开源协议简介以及使用</title>
+    <url>/2017/06/24/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E7%AE%80%E4%BB%8B%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="开源协议简介以及使用"><a href="#开源协议简介以及使用" class="headerlink" title="开源协议简介以及使用"></a>开源协议简介以及使用</h1><h2 id="开源协议简介"><a href="#开源协议简介" class="headerlink" title="开源协议简介"></a>开源协议简介</h2><h3 id="什么是开源协议"><a href="#什么是开源协议" class="headerlink" title="什么是开源协议"></a>什么是开源协议</h3><p>开源协议是针对电脑软件或者其他产品规定，允许在指定的条件下或限制下，使用修改源代码、分享蓝图或设计的公共协议，不同的协议中定义了个人或者公司是否使用开源代码进行修改、设计使用、商用以及是否需要标注来源。</p>
+<h3 id="为什么需要开源协议"><a href="#为什么需要开源协议" class="headerlink" title="为什么需要开源协议"></a>为什么需要开源协议</h3><p>开源协议是证明软件版权的有力证据，这里就要提到软著(计算机软件著作权)，软件著作权是国内对于软件版权的保护证明，但是软著对于版本更新支持不好，每次更新迭代都是要重新注册。</p>
+<p>开源协议上虽然在国内没有明确的法律支撑，但是却是软件版权的有利证明，并且对于更新迭代支持更好。</p>
+<h2 id="开源协议列表"><a href="#开源协议列表" class="headerlink" title="开源协议列表"></a>开源协议列表</h2><h3 id="常用开源协议"><a href="#常用开源协议" class="headerlink" title="常用开源协议"></a>常用开源协议</h3><h4 id="Apache-License-2-0"><a href="#Apache-License-2-0" class="headerlink" title="Apache License 2.0"></a>Apache License 2.0</h4><p>Apache 背书的常用协议，Apache很多开源项目都用到了，以下是协议内容：</p>
+<ol>
+<li>永久免费的全球性的不可撤销的版本许可</li>
+<li>允许复制、公开以及其衍生内容</li>
+<li>允许对内容商用化</li>
+<li>修改内容必须显著声明，且保留原始源作品中的版权、商标等信息</li>
+<li>在与Apache协议不冲突情况下允许在衍生内容中添加自己的许可<h4 id="BSD"><a href="#BSD" class="headerlink" title="BSD"></a>BSD</h4>The BSD License（BSD）是Berkeley Software Distribution License（柏克莱软体散布授权条款）的缩写，许多软体是在此一授权条款下发布的。</li>
+</ol>
+<p>以下是 BSD 2-Clause协议内容：</p>
+<ol>
+<li>源代码的再分发必须保留上述版权声明、本条件列表和以下免责声明</li>
+<li>源代码修改后必须在内容中标识版权声明</li>
+</ol>
+<p>BSD 3-Clause 协议在 BSD 2-Clause基础上添加了</p>
+<ol>
+<li>未经事先书面许可，不得使用版权所有者或其贡献者的名称来认可或推广本软件衍生的产品</li>
+</ol>
+<h4 id="GNU-General-Public-License-GPL"><a href="#GNU-General-Public-License-GPL" class="headerlink" title="GNU General Public License (GPL)"></a>GNU General Public License (GPL)</h4><p>由 MIT 教授理查德·斯托曼（Richard Stallman）提出应将软件源码看成人类共同拥有的知识财富，应该公开地自由交换、修改提出了GNU计划并建立了自由软件基金会;同时，发布了一份举足轻重的法律文件，GNU 通用公共授权书(GPL)，主要分为版本2和版本3，主要区别是版本3中添加免责声明等附加内容。</p>
+<p>以下是GPL协议内容：</p>
+<ol>
+<li>允许对代码复制、编辑</li>
+<li>允许衍生内容商用</li>
+<li>衍生的产品必须开源,并且不得限制公开权益，不允许修改后和衍生的代码做为闭源的商业软件发布和销售</li>
+<li>必须声明来源并且需要声明原有的协议</li>
+</ol>
+<h4 id="GNU-Library-or-“Lesser”-General-Public-License-LGPL"><a href="#GNU-Library-or-“Lesser”-General-Public-License-LGPL" class="headerlink" title="GNU Library or “Lesser” General Public License (LGPL)"></a>GNU Library or “Lesser” General Public License (LGPL)</h4><p>根据GPL协议的规定，所有的衍生内容必须开源，就会导致一个现象，有部分开源项目库如果是GPL协议并且没有替代的方案，这时如果一个非开源项目想要使用这部分项目内容就必须开源，就会与开发者的想法矛盾，因此LGPL诞生了。</p>
+<p>允许以动态链接使用开源库，同时，调用了该库的函数的那部分代码还是要开源的，除此之外的部分不需要开源。</p>
+<h4 id="MIT-license"><a href="#MIT-license" class="headerlink" title="MIT license"></a>MIT license</h4><p>MIT许可协议之名源自麻省理工学院（Massachusetts Institute of Technology, MIT），又称“X许可协议”（X License）或“X11许可协议”（X11 License）</p>
+<ol>
+<li>允许对源码进行修改、发布、公开</li>
+<li>必须包含著作权声明和许可声明</li>
+</ol>
+<h4 id="Mozilla-Public-License-2-0"><a href="#Mozilla-Public-License-2-0" class="headerlink" title="Mozilla Public License 2.0"></a>Mozilla Public License 2.0</h4><p>MPL是The Mozilla Public License的简写，是1998年初Netscape的 Mozilla小组为其开源软件项目设计的软件许可证。</p>
+<p>MPL协议与LGPL协议类似，如在已有的源代码库上加一个接口，除了接口程序的源代码以MPL许可证的形式对外许可外，源代码库中的源代码就可以不用MPL许可证的方式强制对外许可。</p>
+<h4 id="Common-Development-and-Distribution-License-CDDL"><a href="#Common-Development-and-Distribution-License-CDDL" class="headerlink" title="Common Development and Distribution License(CDDL)"></a>Common Development and Distribution License(CDDL)</h4><p>CDDL（Common Development and Distribution License，通用开发与发行许可）开源协议，是MPL（Mozilla Public License）的扩展协议，它允许公共版权使用，无专利费，并提供专利保护，可集成于商业软件中，允许自行发布许可，修改后的代码版权归软件的发起者。</p>
+<h4 id="Eclipse-Public-License-version-2-0"><a href="#Eclipse-Public-License-version-2-0" class="headerlink" title="Eclipse Public License version 2.0"></a>Eclipse Public License version 2.0</h4><p>Eclipse Public License（EPL）是一个与CPL相类似的许可证，任何扩展自Eclipse源码的代码也必须是开源的。</p>
+<ol>
+<li>EPL允许Recipients任意使用、复制、分发、传播、展示、修改以及改后闭源的二次商业发布。</li>
+<li>将源码的整体或部分再次开源发布的时候,必须继续遵循EPL开源协议来发布,而不能改用其他协议发布</li>
+<li>要发布修改后的源码时必须声明源代码可获取且要告知获取方法</li>
+<li>需要将EPL下的源码作为一部分跟其他私有的源码混合发布时，EPL代码需要使用EPL协议，其余模块可以不用开源</li>
+</ol>
+<h2 id="开源协议使用"><a href="#开源协议使用" class="headerlink" title="开源协议使用"></a>开源协议使用</h2><h3 id="github-gitlab-添加"><a href="#github-gitlab-添加" class="headerlink" title="github/gitlab 添加"></a>github/gitlab 添加</h3><p>在仓库中直接添加比较简单，通过<code>Add file</code>文件<br><img src="https://i.loli.net/2021/08/26/sduzKnjhiQrVCvX.png" alt="截屏2021-08-26 01.04.52"><br>将文件名称命名为LICENSE，会自动提示右侧的<code>Choose a license template</code></p>
+<p><img src="https://i.loli.net/2021/08/26/PiLlkt9xIQeJg5N.png" alt="截屏2021-08-26 01.03.19"><br>选择好对应的开源协议，添加到自己的项目中。<br><img src="https://i.loli.net/2021/08/26/iQDUXbkPx1wfoKl.png" alt="截屏2021-08-26 01.03.34"></p>
+<h3 id="idea-添加"><a href="#idea-添加" class="headerlink" title="idea 添加"></a>idea 添加</h3><p>idea是可以直接通过新建文件的方式，来选择建立不同需求上的开源协议的。</p>
+<blockquote>
+<p>New-&gt;License file-&gt; 选择需要使用的开源协议<br>操作如下图：</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/08/26/LQHMNeXEZc9DSmf.png" alt="截屏2021-08-26 00.56.52"></p>
+<h3 id="直接创建"><a href="#直接创建" class="headerlink" title="直接创建"></a>直接创建</h3><p>当没有编译器或者没有具体的网页操作时，可以简单的通过记事本方式，将需要使用的开源协议的规范内容COPY到文件中，命名为<code>LICENSE</code></p>
+<h2 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h2><ol>
+<li><a href="https://opensource.org/licenses" target="_blank" rel="noopener">Open Source Initiative</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2010/02/why_gpl_is_a_better_choice.html" target="_blank" rel="noopener">为什么GPL是更好的开源许可证?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Open-source_license" target="_blank" rel="noopener">开源协议说明</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/GNU通用公共许可证" target="_blank" rel="noopener">GNU通用公共许可证</a></li>
+<li><a href="http://c.biancheng.net/view/674.html" target="_blank" rel="noopener">GPL协议和自由软件</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>开发部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop技术内幕-源代码环境准备</title>
+    <url>/2016/03/29/%E6%BA%90%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/</url>
+    <content><![CDATA[<h1 id="源代码环境准备"><a href="#源代码环境准备" class="headerlink" title="源代码环境准备"></a>源代码环境准备</h1><h3 id="Hadoop生态环境"><a href="#Hadoop生态环境" class="headerlink" title="Hadoop生态环境"></a>Hadoop生态环境</h3><ul>
+<li>Hadoop Common:配置、远程RPC、序列化机制、抽象文件系统</li>
+<li>Avro:数据序列化系统</li>
+<li>Zookeeper:统一命名服务、状态同步、集群管理、分布式应用配置</li>
+<li>HDFS:分布式文件系统</li>
+<li>MR:计算模型，对分布式并行环境处理数据</li>
+<li>HBase:增强的稀疏排序，可以和MR完美结合</li>
+<li>Hive:数据仓库架构，数据ETL工具，数据存储管理</li>
+<li>Pig:针对大型数据集进行分析和评估的平台</li>
+<li>Mahout:数据挖掘处理架构</li>
+<li>X-RIME:社会网络分析工具</li>
+<li>Crossbow:基因测序等海量计算</li>
+<li>Chukwa:监控大规模分布式系统的数据收集开源系统</li>
+<li>Flume:日志收集系统</li>
+<li>Sqoop:结构化数据和Hadoop之间进行数据交换</li>
+<li>Oozie:数据工作流处理</li>
+</ul>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>大数据</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单例模式</title>
+    <url>/2018/10/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><h2 id="什么是单例模式"><a href="#什么是单例模式" class="headerlink" title="什么是单例模式"></a>什么是单例模式</h2><p>单例模式(Singleton Pattern)：确保一个类在任何情况下仅有一个实例存在，并提供全局的访问点。<br>单例模式有以下两个特征：</p>
+<ol>
+<li>在单例模式构造的过程中必须要隐藏所有的构造方法</li>
+<li>单例模式属于是创建型模式</li>
+</ol>
+<blockquote>
+<p>常用使用场景: <code>ServletContext</code>、<code>ServletConfig</code>、<code>ApplicationContext</code></p>
+</blockquote>
+<h2 id="单例模式的作用"><a href="#单例模式的作用" class="headerlink" title="单例模式的作用"></a>单例模式的作用</h2><h2 id="单例模式的实现"><a href="#单例模式的实现" class="headerlink" title="单例模式的实现"></a>单例模式的实现</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><blockquote>
+<p>无论是否使用先将实例进行创建</p>
+</blockquote>
+<ul>
+<li>优点：操作简单</li>
+<li>缺点：无论用户是否使用都会创建对象，当单例个数较多时，造成内存空间的浪费</li>
+</ul>
+<h4 id="静态对象饿汉式"><a href="#静态对象饿汉式" class="headerlink" title="静态对象饿汉式"></a>静态对象饿汉式</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1. 设置为static 保证 类加载前进行初始化</span></span><br><span class="line">    <span class="comment">//2. final 保证不会被反射或者其他操作覆盖</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingleton hungrySingleton = <span class="keyword">new</span> HungrySingleton();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> hungrySingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="静态代码块饿汉式"><a href="#静态代码块饿汉式" class="headerlink" title="静态代码块饿汉式"></a>静态代码块饿汉式</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungryStaticSingleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungryStaticSingleton hungrySingleton;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        hungrySingleton = <span class="keyword">new</span> HungryStaticSingleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungryStaticSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungryStaticSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> hungrySingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><blockquote>
+<p>在外部调用时才会进行创建实例</p>
+</blockquote>
+<h4 id="简单懒汉式"><a href="#简单懒汉式" class="headerlink" title="简单懒汉式"></a>简单懒汉式</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySimpleSingleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySimpleSingleton lazySingleton;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySimpleSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> LazySimpleSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(lazySingleton)) &#123;</span><br><span class="line">            lazySingleton = <span class="keyword">new</span> LazySimpleSingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lazySingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestLazySimpleSingleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            LazySimpleSingleton instance = LazySimpleSingleton.getInstance();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + instance);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            LazySimpleSingleton instance = LazySimpleSingleton.getInstance();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + instance);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Execute thread."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当单例模式代码中没有添加<code>synchronized</code>关键字时，按照线程方式进行断点调试发现：<br><img src="https://i.loli.net/2021/09/02/hwLTn3d4GHUZr2P.png" alt="截屏2021-09-01 00.33.31"></p>
+<ol>
+<li>当<code>Thread0</code>进入为null的判断中进行了赋值操作</li>
+<li>同时debug F8 <code>Thread1</code>同样进入if判断，进行赋值操作</li>
+<li>两个线程会创建出不同的实例对象</li>
+</ol>
+<p>因此为了保证单例的存在，在代码中添加了<code>synchronized</code>关键字。</p>
+<h4 id="Double-Check-饿汉式"><a href="#Double-Check-饿汉式" class="headerlink" title="Double Check 饿汉式"></a>Double Check 饿汉式</h4><p>基于<a href="#简单懒汉式">简单懒汉式</a>的方式可以看出，当两个线程同时需要创建单例对象时，根据<code>synchronized</code>关键字对对象上锁，虽然JDK1.6后对<code>synchronized</code>关键字进行了优化，但是对象上锁依旧会影响性能。因此产生了Double Check的单例实现方式。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyDoubleCheckSingleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazyDoubleCheckSingleton lazySingleton;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazyDoubleCheckSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazyDoubleCheckSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(lazySingleton)) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (LazyDoubleCheckSingleton<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (Objects.isNull(lazySingleton)) &#123;</span><br><span class="line">                    lazySingleton = <span class="keyword">new</span> LazyDoubleCheckSingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lazySingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestLazyDoubleCheckSingleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            LazyDoubleCheckSingleton instance = LazyDoubleCheckSingleton.getInstance();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + instance);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            LazyDoubleCheckSingleton instance = LazyDoubleCheckSingleton.getInstance();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + instance);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Execute thread."</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对Double Check的单例实现方式有以下要点：</p>
+<ol>
+<li><code>if (Objects.isNull(lazySingleton))</code>的外层判断是为了提高性能，当对象不为空时，没有必要使用<code>synchronized</code>代码块进行加锁操作，只有当实例为null时才需要考虑到是否会有多线程同时进行单例对象的创建。</li>
+<li><code>synchronized (LazyDoubleCheckSingleton.class)</code>修饰的静态代码块，保证了多线程不会同时创建不同的对象，保证单例的功能。</li>
+<li><code>if (Objects.isNull(lazySingleton))</code>判断的内层判断，是为了处理当<code>synchronized (LazyDoubleCheckSingleton.class)</code>代码块执行结束后，但是实例对象还没有返回的过程中，其他线程会拿到静态代码块的锁再次创建单例对象，导致单例功能被破坏的并发场景。</li>
+</ol>
+<h4 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyInnerClassSingleton</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazyInnerClassSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazyInnerClassSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> InnerSingletonClass.LAZY_INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//内部类</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerSingletonClass</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LazyInnerClassSingleton LAZY_INSTANCE = <span class="keyword">new</span> LazyInnerClassSingleton();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestLazyInnerClassSingleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            LazyInnerClassSingleton instance = LazyInnerClassSingleton.getInstance();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + instance);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            LazyInnerClassSingleton instance = LazyInnerClassSingleton.getInstance();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + instance);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Execute thread."</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="破坏单例"><a href="#破坏单例" class="headerlink" title="破坏单例"></a>破坏单例</h3><blockquote>
+<p>针对以上提到的单例的实现方式，依旧存在着一些使用漏洞，会导致创建的实例对象不再是单例。</p>
+</blockquote>
+<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><p>反射就是把Java类中的各个成分映射成一个个的Java对象。即在运行状态中，对于任意一个类，都能够知道这个类的所以属性和方法；对于任意一个对象，都能调用它的任意一个方法和属性。这种动态获取信息及动态调用对象方法的功能叫Java的反射机制。</p>
+<p>对单例模式中的实例对象，均可以通过反射的方式获取到该对象的默认构造方法，进行对象的创建。当使用者无法了解到单例对象的创建过程时，可能会通过反射方式创建对象导致单例失效。</p>
+<h4 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h4><p><strong>通用的解决方式是在私有化的构造方法中添加异常信息，确保反射无法创建对象。</strong></p>
+<p>以静态内部类实现单例方式实现：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyInnerClassSingleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazyInnerClassSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Objects.nonNull(InnerSingletonClass.LAZY_INSTANCE)) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazyInnerClassSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> InnerSingletonClass.LAZY_INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//内部类</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerSingletonClass</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LazyInnerClassSingleton LAZY_INSTANCE = <span class="keyword">new</span> LazyInnerClassSingleton();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestReflectSingleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Object instance = LazyInnerClassSingleton.getInstance();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//反射调用私有构造函数</span></span><br><span class="line">            Class&lt;?&gt; clazz = LazyInnerClassSingleton<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">            <span class="comment">//获取构造方法</span></span><br><span class="line">            Constructor&lt;?&gt; constructor = clazz.getDeclaredConstructor(<span class="keyword">null</span>);</span><br><span class="line">            <span class="comment">//设置可访问</span></span><br><span class="line">            constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            Object o = constructor.newInstance();</span><br><span class="line"></span><br><span class="line">            System.out.println(o == instance);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/09/02/f6ESLcHixvTwlrh.png" alt="截屏2021-09-02 01.44.46"></p>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>将一个实例化对象通过序列化的方式写入到其他存储方式中，反序列化构造对象后，无法保证对象的单例。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingletonSerializable</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1. 设置为static 保证 类加载前进行初始化</span></span><br><span class="line">    <span class="comment">//2. final 保证不会被反射或者其他操作覆盖</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingletonSerializable hungrySingleton = <span class="keyword">new</span> HungrySingletonSerializable();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingletonSerializable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingletonSerializable <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> hungrySingleton;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSerializableSingleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        FileOutputStream fileOutputStream = <span class="keyword">null</span>;</span><br><span class="line">        FileInputStream fileInputStream = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//获取单例对象</span></span><br><span class="line">        HungrySingletonSerializable instance = HungrySingletonSerializable.getInstance();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 序列化对象</span></span><br><span class="line">            fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"HungrySingletonSerializable.obj"</span>);</span><br><span class="line">            ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(fileOutputStream);</span><br><span class="line">            objectOutputStream.writeObject(instance);</span><br><span class="line"></span><br><span class="line">            objectOutputStream.flush();</span><br><span class="line">            objectOutputStream.close();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//反序列化</span></span><br><span class="line">            fileInputStream = <span class="keyword">new</span> FileInputStream(<span class="string">"HungrySingletonSerializable.obj"</span>);</span><br><span class="line">            ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(fileInputStream);</span><br><span class="line">            HungrySingletonSerializable instance2 = (HungrySingletonSerializable) objectInputStream.readObject();</span><br><span class="line">            objectInputStream.close();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//对象比较</span></span><br><span class="line">            System.out.println(instance == instance2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"some exception."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/09/02/5fYLUyCN6jegKQn.png" alt="截屏2021-09-02 02.09.25"></p>
+<h5 id="如何解决-1"><a href="#如何解决-1" class="headerlink" title="如何解决"></a>如何解决</h5><p><strong>重写<code>readResolve</code>方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingletonSerializable</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1. 设置为static 保证 类加载前进行初始化</span></span><br><span class="line">    <span class="comment">//2. final 保证不会被反射或者其他操作覆盖</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingletonSerializable hungrySingleton = <span class="keyword">new</span> HungrySingletonSerializable();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有化构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingletonSerializable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回单例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingletonSerializable <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> hungrySingleton;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//重写readResolve方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> hungrySingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再次测试结果如下：<br><img src="https://i.loli.net/2021/09/02/VNnTWRaZX2zhFe8.png" alt="截屏2021-09-02 02.13.01"></p>
+<h5 id="为何重写readResolve方法可以解决单例问题"><a href="#为何重写readResolve方法可以解决单例问题" class="headerlink" title="为何重写readResolve方法可以解决单例问题"></a>为何重写<code>readResolve</code>方法可以解决单例问题</h5><p>看源码中<code>objectInputStream.readObject()</code>的实现中</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Object <span class="title">readObject</span><span class="params">()</span></span></span><br><span class="line"><span class="function">     <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> readObject(Object<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//readObject()方法</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">final</span> Object <span class="title">readObject</span><span class="params">(Class&lt;?&gt; type)</span></span></span><br><span class="line"><span class="function">     <span class="keyword">throws</span> IOException, ClassNotFoundException</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     ...</span><br><span class="line">         Object obj = readObject0(type, <span class="keyword">false</span>); <span class="comment">//调用了readObject0()方法</span></span><br><span class="line">     ...      </span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//在readObject0()方法中</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> Object <span class="title">readObject0</span><span class="params">(Class&lt;?&gt; type, <span class="keyword">boolean</span> unshared)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">     ...</span><br><span class="line">         <span class="keyword">switch</span> (tc) &#123;</span><br><span class="line">             ...</span><br><span class="line">             <span class="keyword">case</span> TC_ENUM:</span><br><span class="line">                 <span class="keyword">if</span> (type == String<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">                     <span class="keyword">throw</span> <span class="keyword">new</span> ClassCastException(<span class="string">"Cannot cast an enum to java.lang.String"</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="keyword">return</span> checkResolve(readEnum(unshared));</span><br><span class="line"></span><br><span class="line">             <span class="keyword">case</span> TC_OBJECT:</span><br><span class="line">                 <span class="keyword">if</span> (type == String<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">                 <span class="comment">//判断是否是String类型</span></span><br><span class="line">                     <span class="keyword">throw</span> <span class="keyword">new</span> ClassCastException(<span class="string">"Cannot cast an object to java.lang.String"</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="keyword">return</span> checkResolve(readOrdinaryObject(unshared)); <span class="comment">//调用readOrdinaryObject()方法</span></span><br><span class="line"></span><br><span class="line">             ...</span><br><span class="line">          &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//readOrdinaryObject()方法</span></span><br><span class="line">     <span class="function"><span class="keyword">private</span> Object <span class="title">readOrdinaryObject</span><span class="params">(<span class="keyword">boolean</span> unshared)</span></span></span><br><span class="line"><span class="function">     <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     ...</span><br><span class="line">     Object obj;</span><br><span class="line">     <span class="keyword">try</span> &#123;</span><br><span class="line">         obj = desc.isInstantiable() ? desc.newInstance() : <span class="keyword">null</span>; <span class="comment">//调用isInstantiable(),判断能否被初始化的判断</span></span><br><span class="line">     &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">         <span class="keyword">throw</span> (IOException) <span class="keyword">new</span> InvalidClassException(</span><br><span class="line">             desc.forClass().getName(),</span><br><span class="line">             <span class="string">"unable to create instance"</span>).initCause(ex);</span><br><span class="line">     &#125;</span><br><span class="line">     ...</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">         handles.lookupException(passHandle) == <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">         desc.hasReadResolveMethod()) <span class="comment">// 判断是否存在readResolve()方法</span></span><br><span class="line">     &#123;</span><br><span class="line">         Object rep = desc.invokeReadResolve(obj); <span class="comment">//如果存在readResolve()方法，则进行调用该方法，重写对象，返回rep对象</span></span><br><span class="line">        ...     </span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> obj;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="title">ObjectStreamClass</span><span class="params">(<span class="keyword">final</span> Class&lt;?&gt; cl)</span> </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">                 writeReplaceMethod = getInheritableMethod(</span><br><span class="line">                     cl, <span class="string">"writeReplace"</span>, <span class="keyword">null</span>, Object<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">                 readResolveMethod = getInheritableMethod(</span><br><span class="line">                     cl, <span class="string">"readResolve"</span>, <span class="keyword">null</span>, Object<span class="class">.<span class="keyword">class</span>)</span>; <span class="comment">// 反射调用readResolve方法</span></span><br><span class="line">                 <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">           ...</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>实际上在反序列化的过程中，是创建了两次对象，首先是判断如果有构造函数，那么会创建一次对象；</li>
+<li>如果重写了readSolve方法，那么调用readSolve方法后，会将结果覆盖第一次创建的对象。</li>
+</ol>
+<h4 id="枚举方式"><a href="#枚举方式" class="headerlink" title="枚举方式"></a>枚举方式</h4><p>在《Effective Java》中推荐使用枚举方式实现单例，具体写法如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> EnumSingleton &#123;</span><br><span class="line">    ENUM_SINGLETON;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EnumSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ENUM_SINGLETON;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestEnumSingleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        FileOutputStream fileOutputStream = <span class="keyword">null</span>;</span><br><span class="line">        FileInputStream fileInputStream = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//获取单例对象</span></span><br><span class="line">        EnumSingleton instance = EnumSingleton.getInstance();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 序列化对象</span></span><br><span class="line">            fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"EnumSingleton.obj"</span>);</span><br><span class="line">            ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(fileOutputStream);</span><br><span class="line">            objectOutputStream.writeObject(instance);</span><br><span class="line"></span><br><span class="line">            objectOutputStream.flush();</span><br><span class="line">            objectOutputStream.close();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//反序列化</span></span><br><span class="line">            fileInputStream = <span class="keyword">new</span> FileInputStream(<span class="string">"EnumSingleton.obj"</span>);</span><br><span class="line">            ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(fileInputStream);</span><br><span class="line">            EnumSingleton instance2 = (EnumSingleton) objectInputStream.readObject();</span><br><span class="line">            objectInputStream.close();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//对象比较</span></span><br><span class="line">            System.out.println(instance == instance2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"some exception."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/09/02/pIZtPxOWEGwFuhc.png" alt="截屏2021-09-02 02.43.34"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
       </tags>
   </entry>
 </search>
